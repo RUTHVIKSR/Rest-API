@@ -102,4 +102,43 @@ The `.env` file is automatically ignored by Git (included in `.gitignore`) to pr
 ## 10. Database Structure
 
 Created `src/db/` directory to organize database-related files:
-- `src/db/users.ts` - User model and schema definitions (ready for implementation)
+
+### User Model (`src/db/users.ts`)
+Implemented a complete user management system with:
+
+**User Schema:**
+- `username`: Unique username for each user
+- `email`: Unique email address for authentication
+- `authentication`: Nested object containing:
+  - `password`: Hashed password (excluded from queries by default)
+  - `salt`: Random salt for password hashing (excluded from queries by default)
+  - `sessionToken`: Token for session management (excluded from queries by default)
+
+**User Operations:**
+- `getUsers()`: Retrieve all users
+- `findUserById(id)`: Find user by MongoDB ObjectId
+- `getUserByEmail(email)`: Find user by email address
+- `getUserBySessionToken(token)`: Find user by session token
+- `createUser(values)`: Create new user with provided data
+- `deleteUserById(id)`: Delete user by ID
+- `updateUserById(id, updates)`: Update user information
+
+## 11. Authentication Helpers (`src/helpers/index.ts`)
+
+Created utility functions for secure authentication:
+
+### Cryptographic Functions:
+- **`random()`**: Generates a 128-byte random salt encoded in base64
+  - Uses Node.js built-in `crypto` module for secure random generation
+  - Essential for password security and preventing rainbow table attacks
+
+- **`authentication(salt, password)`**: Creates secure password hash
+  - Uses HMAC-SHA256 algorithm for strong cryptographic hashing
+  - Combines user's salt, password, and application secret
+  - Returns hexadecimal digest for storage and comparison
+
+### Security Features:
+- Application-level secret for additional security layer
+- Salt-based password hashing to prevent rainbow table attacks
+- Consistent hashing algorithm for reliable authentication
+- Secure random generation using cryptographically strong methods
