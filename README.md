@@ -37,3 +37,16 @@ npm install -D nodemon
 ## 5. .gitignore
 
 A `.gitignore` file was added to the project to prevent sensitive and unnecessary files from being committed to the Git repository. This includes `node_modules`, environment variables, build outputs, and editor-specific files.
+
+## 6. Initial Server Setup (`src/index.ts`)
+
+The main entry point of the application is `src/index.ts`. This file is responsible for setting up the Express server and its middleware.
+
+- **Express**: A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+- **http**: A built-in Node.js module to create an HTTP server.
+- **cookie-parser**: Middleware to parse `Cookie` header and populate `req.cookies` with an object keyed by the cookie names.
+- **body-parser**: Middleware to parse incoming request bodies. It's a crucial part of handling POST requests.
+- **compression**: Middleware to compress response bodies for better performance.
+- **cors**: Middleware to enable Cross-Origin Resource Sharing (CORS) with various options.
+
+The server is configured to use these middlewares and listens on port 8080.
