@@ -50,3 +50,56 @@ The main entry point of the application is `src/index.ts`. This file is responsi
 - **cors**: Middleware to enable Cross-Origin Resource Sharing (CORS) with various options.
 
 The server is configured to use these middlewares and listens on port 8080.
+
+## 7. Express Dependencies Installation
+
+```bash
+npm install express cookie-parser body-parser compression cors
+npm install @types/express @types/cookie-parser @types/body-parser @types/compression @types/cors --save-dev
+```
+
+Installation of core Express.js dependencies and their TypeScript type definitions:
+- **express**: Web application framework for Node.js
+- **cookie-parser**: Parse Cookie header and populate req.cookies
+- **body-parser**: Parse incoming request bodies in middleware before handlers
+- **compression**: Compress response bodies for all requests
+- **cors**: Enable CORS (Cross-Origin Resource Sharing) with various options
+
+## 8. MongoDB Integration
+
+```bash
+npm install mongoose dotenv
+```
+
+Added MongoDB database support and environment variable management:
+
+### MongoDB Connection (`mongoose`)
+- **mongoose**: Elegant MongoDB object modeling for Node.js
+- Provides schema-based solution to model application data
+- Includes built-in type casting, validation, query building, and business logic hooks
+
+### Environment Variables (`dotenv`)
+- **dotenv**: Loads environment variables from `.env` file into `process.env`
+- Keeps sensitive configuration (like database URLs) separate from code
+- Essential for security and different environment configurations
+
+### Database Configuration
+The MongoDB connection is configured in `src/index.ts` with:
+- Environment variable validation to ensure `MONGO_URL` is defined
+- Error handling for connection failures
+- Success logging when connection is established
+- Connection string stored securely in `.env` file (excluded from version control)
+
+## 9. Environment Configuration
+
+Created `.env` file to store sensitive configuration:
+```
+MONGO_URL=mongodb+srv://username:password@cluster.mongodb.net/database
+```
+
+The `.env` file is automatically ignored by Git (included in `.gitignore`) to prevent sensitive data from being committed to the repository.
+
+## 10. Database Structure
+
+Created `src/db/` directory to organize database-related files:
+- `src/db/users.ts` - User model and schema definitions (ready for implementation)
