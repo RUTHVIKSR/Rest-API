@@ -8,6 +8,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 import router from './router';
+import { setupSwagger } from './config/swagger';
 
 dotenv.config();
 
@@ -40,5 +41,8 @@ mongoose.connection.on('error', (error) => {
 mongoose.connection.on('connected', () => {
     console.log('Successfully connected to MongoDB');
 });
+
+// Setup Swagger documentation
+setupSwagger(app);
 
 app.use('/', router());

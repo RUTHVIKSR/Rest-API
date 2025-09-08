@@ -208,3 +208,48 @@ This modular approach ensures:
 - **Maintainability**: Routes are organized by feature/domain
 - **Scalability**: Easy to add new route modules
 - **Clarity**: Clear separation of concerns between routing and business logic
+
+## 14. API Documentation with Swagger
+
+```bash
+npm install swagger-ui-express swagger-jsdoc
+npm install @types/swagger-ui-express @types/swagger-jsdoc --save-dev
+```
+
+Implemented comprehensive API documentation using Swagger/OpenAPI 3.0:
+
+### Swagger Configuration (`src/config/swagger.ts`)
+- **OpenAPI 3.0 Specification**: Modern API documentation standard
+- **Interactive Documentation**: Live API testing interface
+- **Schema Definitions**: Reusable component schemas for requests/responses
+- **Server Configuration**: Development server endpoint configuration
+
+### Key Features:
+- **Interactive UI**: Test API endpoints directly from the documentation
+- **Schema Validation**: Predefined request/response schemas
+- **Error Examples**: Multiple error scenario examples
+- **Live Testing**: Real-time API testing without external tools
+
+### Documentation Access:
+- **Swagger UI**: Available at `http://localhost:8080/api-docs`
+- **Auto-generated**: Documentation updates automatically with code changes
+- **JSDoc Integration**: Uses JSDoc comments in route files for documentation
+
+### Route Documentation
+Enhanced authentication routes with comprehensive Swagger annotations:
+- **Request/Response Schemas**: Detailed API contract definitions
+- **Error Handling**: Multiple error response examples
+- **Parameter Validation**: Clear parameter requirements and formats
+- **Example Data**: Sample requests and responses for testing
+
+### Testing Documentation (`docs/API_TESTING.md`)
+Created comprehensive testing guide including:
+- **Swagger UI Instructions**: Step-by-step testing guide
+- **cURL Examples**: Command-line testing examples
+- **Sample Data**: Valid and invalid test cases
+- **Expected Responses**: Success and error response examples
+
+This documentation system provides:
+- **Developer Experience**: Easy API exploration and testing
+- **Standardization**: Consistent API documentation format
+- **Maintainability**: Self-updating documentation from code annotations
