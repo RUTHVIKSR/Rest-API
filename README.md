@@ -142,3 +142,39 @@ Created utility functions for secure authentication:
 - Salt-based password hashing to prevent rainbow table attacks
 - Consistent hashing algorithm for reliable authentication
 - Secure random generation using cryptographically strong methods
+
+## 12. Authentication Controllers (`src/controllers/authentication.ts`)
+
+Implemented authentication endpoints for user management:
+
+### User Registration Controller:
+- **`register(req, res)`**: Handles user registration requests
+
+**Registration Process:**
+1. **Input Validation**: Validates required fields (username, email, password)
+2. **Duplicate Check**: Verifies email uniqueness to prevent duplicate accounts
+3. **Secure Password Storage**:
+   - Generates random salt using `random()` helper
+   - Creates password hash using `authentication()` helper with salt
+   - Stores only hashed password, never plain text
+4. **User Creation**: Creates new user in database with secure authentication data
+5. **Response Handling**: Returns success with user ID or appropriate error messages
+
+**Security Features:**
+- Input sanitization and validation
+- Duplicate email prevention
+- Secure password hashing with unique salts
+- Proper error handling without exposing sensitive information
+- HTTP status codes for different scenarios (201 for success, 400 for errors)
+
+**API Endpoint Structure:**
+```typescript
+POST /register
+Body: {
+  username: string,
+  email: string,
+  password: string
+}
+```
+
+This controller ensures secure user registration with industry-standard security practices.
