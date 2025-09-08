@@ -7,6 +7,8 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
+import router from './router';
+
 dotenv.config();
 
 const app = express();
@@ -38,3 +40,5 @@ mongoose.connection.on('error', (error) => {
 mongoose.connection.on('connected', () => {
     console.log('Successfully connected to MongoDB');
 });
+
+app.use('/', router());

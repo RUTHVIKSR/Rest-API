@@ -178,3 +178,33 @@ Body: {
 ```
 
 This controller ensures secure user registration with industry-standard security practices.
+
+## 13. API Routing System (`src/router/`)
+
+Implemented a modular routing system to organize API endpoints:
+
+### Main Router (`src/router/index.ts`)
+- **Central Router Configuration**: Creates and exports the main Express router
+- **Modular Route Organization**: Imports and integrates specific route modules
+- **Scalable Architecture**: Easy to add new route modules as the API grows
+
+### Authentication Routes (`src/router/authentication.ts`)
+- **Registration Endpoint**: `POST /auth/register` - User registration
+- **Route Binding**: Connects authentication controller to specific endpoints
+- **RESTful Design**: Follows REST API conventions with `/auth` prefix
+
+### Server Integration
+The routing system is integrated into the main server (`src/index.ts`):
+- Router is imported and mounted on the root path `/`
+- All API endpoints are accessible through the centralized routing system
+- Clean separation between server setup and route definitions
+
+**Current API Endpoints:**
+```
+POST /auth/register - User registration
+```
+
+This modular approach ensures:
+- **Maintainability**: Routes are organized by feature/domain
+- **Scalability**: Easy to add new route modules
+- **Clarity**: Clear separation of concerns between routing and business logic
